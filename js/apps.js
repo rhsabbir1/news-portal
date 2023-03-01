@@ -145,23 +145,3 @@ const trending = () =>{
 
 
 allNewsCatagoris()
-
-
-// others_info
-// : 
-// is_todays_pick
-// : 
-// false
-// is_trending
-// : 
-// true
-
-
-
-// author
-// :
-// img
-// :
-// name
-// :
-// published_date
