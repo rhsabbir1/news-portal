@@ -79,13 +79,15 @@ const getNewsDetails = (news_id) => {
 
 const showDetails = (data) => {
     console.log(data)
-  const showDetailsMOdals = document.getElementById('showDetailsMOdal')
-  const creatDiv = document.createElement('div')
-  creatDiv.classList.add('modal-dialog')
-  creatDiv.innerHTML =`
+    const showDetailsMOdals = document.getElementById('showDetailsMOdal')
+    showDetailsMOdals.innerHTML = '';
+    const creatDiv = document.createElement('div')
+    creatDiv.classList.add('modal-dialog')
+    creatDiv.innerHTML = `
   <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="showDetailsMOdalLabel">Modal title</h5>
+                            <h5 class="modal-title" id="showDetailsMOdalLabel">News Title : 
+                            ${data.title}</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -102,13 +104,27 @@ const showDetails = (data) => {
                             
                         </div>
 
+                        <div class="card-footer border-o d-flex justify-content-between   align-items-center">
+                      <div class="d-flex gap-4 align-items-center">
+                             <img src="${data.author.img}"class="rounded-circle" height="40" width="40" alt="">
+                         <div>
+                          <p class="p-0 m-0">${data.author.name}</p>
+                          <p class="p-0 m-0">Published Date : ${data.author.published_date}</p>
+                      </div>
+                 </div>
+                 <div>
+                 <p>Total views : ${data.total_view} M</p>
+                 </div>
+
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         </div>
                     </div>
+                    
+                    
   `;
-  showDetailsMOdals.appendChild(creatDiv)
+    showDetailsMOdals.appendChild(creatDiv)
 }
 
 allNewsCatagoris()
