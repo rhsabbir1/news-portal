@@ -38,13 +38,28 @@ const showGetNews =(data , name) =>{
                     <div class="col-md-4">
                         <img src="${singleNews.image_url}" class="img-fluid rounded-start" alt="...">
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-8 d-flex flex-column">
                         <div class="card-body">
                             <h5 class="card-title">${singleNews.title}</h5>
                             <p class="card-text">
-                               ${singleNews.details.slice(0 , 200)}
+                               ${singleNews.details.slice(0 , 200)}...
                             </p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            
+                        </div>
+                        <div class="card-footer border-o d-flex justify-content-between align-items-center">
+                             <div class="d-flex gap-4 align-items-center">
+                                <img src="${singleNews.author.img}"class="rounded-circle" height="40" width="40" alt="">
+                                <div>
+                                  <p class="p-0 m-0">${singleNews.author.name}</p>
+                                  <p class="p-0 m-0">Published Date : ${singleNews.author.published_date}</p>
+                                </div>
+                             </div>
+                             <div>
+                             <p>Total views : ${singleNews.total_view} M</p>
+                             </div>
+                             <div>
+                              <button type="button" class="btn btn-outline-success">Details</button>
+                             </div>
                         </div>
                     </div>
                 </div>
@@ -56,3 +71,11 @@ const showGetNews =(data , name) =>{
 
 allNewsCatagoris()
 
+
+// author
+// : 
+// img
+// : 
+// name
+// : 
+// published_date
