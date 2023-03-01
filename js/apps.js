@@ -10,7 +10,7 @@ const displayAllcatagorics = (data) => {
         // console.log(catagory)
         catagoryContainer.innerHTML += `
         <p>
-           <a class="text-decoration-none fs-5" onclick=" getAllNewsById('${catagory.category_id}' , '${catagory.category_name}')">${catagory.category_name} </a>
+           <a class="text-decoration-none fs-5 " onclick=" getAllNewsById('${catagory.category_id}' , '${catagory.category_name}')">${catagory.category_name} </a>
         </p>
         `;
     });
