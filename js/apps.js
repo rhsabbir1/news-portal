@@ -1,7 +1,9 @@
+let fetchData = [];
+
 const allNewsCatagoris = () => {
     fetch('https://openapi.programming-hero.com/api/news/categories')
         .then(res => res.json())
-        .then(data => displayAllcatagorics(data.data.news_category))
+        .then(data =>displayAllcatagorics(data.data.news_category))
 }
 
 const displayAllcatagorics = (data) => {
@@ -21,7 +23,10 @@ const getAllNewsById = (category_id, name) => {
     const URL = ` https://openapi.programming-hero.com/api/news/category/${category_id}`;
     fetch(URL)
         .then(res => res.json())
-        .then(data => showGetNews(data.data, name))
+        .then(data =>{
+            fetchData = data.data;
+            showGetNews(data.data, name)
+        } )
 }
 
 const showGetNews = (data, name) => {
@@ -78,7 +83,7 @@ const getNewsDetails = (news_id) => {
 }
 
 const showDetails = (data) => {
-    console.log(data)
+ 
     const showDetailsMOdals = document.getElementById('showDetailsMOdal')
     showDetailsMOdals.innerHTML = '';
     const creatDiv = document.createElement('div')
@@ -127,17 +132,29 @@ const showDetails = (data) => {
     showDetailsMOdals.appendChild(creatDiv)
 }
 
+const todaypick =()=>{
+    const todays_pick = fetchData.filter(singleData => singleData.others_info.is_todays_pick === true)
+    const catagoryName = document.getElementById('catagory-name').innerText;
+    showGetNews(todays_pick , catagoryName)
+}
+const trending = () =>{
+    const trending_items = fetchData.filter(singleData => singleData.others_info.is_trending === true)
+    const catagoryName = document.getElementById('catagory-name').innerText;
+    showGetNews(trending_items , catagoryName)
+}
+
+
 allNewsCatagoris()
 
 
-others_info
-: 
-is_todays_pick
-: 
-false
-is_trending
-: 
-true
+// others_info
+// : 
+// is_todays_pick
+// : 
+// false
+// is_trending
+// : 
+// true
 
 
 
