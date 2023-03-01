@@ -5,16 +5,13 @@ const allNewsCatagoris = () => {
 }
 
 const displayAllcatagorics = (data) => {
-
+    const catagoryContainer = document.getElementById('catagory-container');
     data.forEach(catagory => {
-        
+        catagoryContainer.innerHTML += `
+        <a class="text-decoration-none fs-5" href="">${catagory.category_name} </a>
+        `;
     });
 }
 
 allNewsCatagoris()
 
-
-
-// git add .
-// git commmit -m"get catagories"
-// git push
