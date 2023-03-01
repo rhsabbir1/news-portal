@@ -50,12 +50,12 @@ const showGetNews = (data, name) => {
                              <div class="d-flex gap-4 align-items-center">
                                 <img src="${singleNews.author.img}"class="rounded-circle" height="40" width="40" alt="">
                                 <div>
-                                  <p class="p-0 m-0">${singleNews.author.name}</p>
+                                  <p class="p-0 m-0">${singleNews.author.name ? singleNews.author.name : 'No user'}</p>
                                   <p class="p-0 m-0">Published Date : ${singleNews.author.published_date}</p>
                                 </div>
                              </div>
                              <div>
-                             <p>Total views : ${singleNews.total_view} M</p>
+                             <p>Total views : ${singleNews.total_view ? singleNews.total_view : 'No views'} M</p>
                              </div>
                              <div>
                               <button onclick="getNewsDetails('${singleNews._id}')" type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#showDetailsMOdal">Details</button>
@@ -97,7 +97,7 @@ const showDetails = (data) => {
                     </div>
                     <div class="col-md-12 d-flex flex-column">
                         <div class="card-body">
-                            <h5 class="card-title">${data.title}</h5>
+                            <h5 class="card-title">${data.title}</h5><span class="badge bg-warning text-dark">${data.others_info.is_trending ? 'Trending' : 'No result' || data.is_todays_pick ? 'Today Pick' : 'No result'}</span>
                             <p class="card-text">
                                ${data.details}
                             </p>
@@ -128,6 +128,17 @@ const showDetails = (data) => {
 }
 
 allNewsCatagoris()
+
+
+others_info
+: 
+is_todays_pick
+: 
+false
+is_trending
+: 
+true
+
 
 
 // author
