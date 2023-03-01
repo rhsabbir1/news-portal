@@ -78,7 +78,37 @@ const getNewsDetails = (news_id) => {
 }
 
 const showDetails = (data) => {
-  
+    console.log(data)
+  const showDetailsMOdals = document.getElementById('showDetailsMOdal')
+  const creatDiv = document.createElement('div')
+  creatDiv.classList.add('modal-dialog')
+  creatDiv.innerHTML =`
+  <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="showDetailsMOdalLabel">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                           
+                        <div class="col-md-12">
+                        <img src="${data.image_url}" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-12 d-flex flex-column">
+                        <div class="card-body">
+                            <h5 class="card-title">${data.title}</h5>
+                            <p class="card-text">
+                               ${data.details}
+                            </p>
+                            
+                        </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+  `;
+  showDetailsMOdals.appendChild(creatDiv)
 }
 
 allNewsCatagoris()
