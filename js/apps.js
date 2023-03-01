@@ -27,7 +27,29 @@ const getAllNewsById = (category_id , name) =>{
 const showGetNews =(data , name) =>{
     document.getElementById('catagory-count').innerText = data.length;
     document.getElementById('catagory-name').innerText = name;
+    const showAllNews = document.getElementById('all-items');
+    showAllNews.innerHTML = ' ';
     data.forEach(singleNews =>{
+        console.log(singleNews)
+
+        showAllNews.innerHTML +=`
+          <div class="card mb-3" >
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="${singleNews.image_url}" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">${singleNews.title}</h5>
+                            <p class="card-text">
+                               ${singleNews.details.slice(0 , 200)}
+                            </p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
         
     })
 }
