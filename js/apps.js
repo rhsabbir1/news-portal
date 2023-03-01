@@ -17,22 +17,22 @@ const displayAllcatagorics = (data) => {
 }
 
 
-const getAllNewsById = (category_id , name) =>{
-    const URL =` https://openapi.programming-hero.com/api/news/category/${category_id}`;
+const getAllNewsById = (category_id, name) => {
+    const URL = ` https://openapi.programming-hero.com/api/news/category/${category_id}`;
     fetch(URL)
-    .then(res => res.json())
-    .then(data => showGetNews(data.data , name))
+        .then(res => res.json())
+        .then(data => showGetNews(data.data, name))
 }
 
-const showGetNews =(data , name) =>{
+const showGetNews = (data, name) => {
     document.getElementById('catagory-count').innerText = data.length;
     document.getElementById('catagory-name').innerText = name;
     const showAllNews = document.getElementById('all-items');
     showAllNews.innerHTML = ' ';
-    data.forEach(singleNews =>{
+    data.forEach(singleNews => {
         // console.log(singleNews)
 
-        showAllNews.innerHTML +=`
+        showAllNews.innerHTML += `
           <div class="card mb-3" >
                 <div class="row g-0">
                     <div class="col-md-4">
@@ -42,7 +42,7 @@ const showGetNews =(data , name) =>{
                         <div class="card-body">
                             <h5 class="card-title">${singleNews.title}</h5>
                             <p class="card-text">
-                               ${singleNews.details.slice(0 , 200)}...
+                               ${singleNews.details.slice(0, 200)}...
                             </p>
                             
                         </div>
@@ -58,33 +58,36 @@ const showGetNews =(data , name) =>{
                              <p>Total views : ${singleNews.total_view} M</p>
                              </div>
                              <div>
-                              <button onclick="getNewsDetails('${singleNews._id}')" type="button" class="btn btn-outline-success">Details</button>
+                              <button onclick="getNewsDetails('${singleNews._id}')" type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#showDetailsMOdal">Details</button>
                              </div>
                         </div>
                     </div>
                 </div>
             </div>
         `;
-        
+
     })
 }
 
-const getNewsDetails = (news_id) =>{
+const getNewsDetails = (news_id) => {
     const URL = `https://openapi.programming-hero.com/api/news/${news_id}`;
     fetch(URL)
-    .then(res => res.json())
-    .then(data => console.log(data.data[0]))
+        .then(res => res.json())
+        .then(data => showDetails(data.data[0]))
 
 }
-// _id
+
+const showDetails = (data) => {
+  
+}
 
 allNewsCatagoris()
 
 
 // author
-// : 
+// :
 // img
-// : 
+// :
 // name
-// : 
+// :
 // published_date
