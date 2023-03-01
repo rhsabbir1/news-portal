@@ -30,7 +30,7 @@ const showGetNews =(data , name) =>{
     const showAllNews = document.getElementById('all-items');
     showAllNews.innerHTML = ' ';
     data.forEach(singleNews =>{
-        console.log(singleNews)
+        // console.log(singleNews)
 
         showAllNews.innerHTML +=`
           <div class="card mb-3" >
@@ -58,7 +58,7 @@ const showGetNews =(data , name) =>{
                              <p>Total views : ${singleNews.total_view} M</p>
                              </div>
                              <div>
-                              <button type="button" class="btn btn-outline-success">Details</button>
+                              <button onclick="getNewsDetails('${singleNews._id}')" type="button" class="btn btn-outline-success">Details</button>
                              </div>
                         </div>
                     </div>
@@ -68,6 +68,15 @@ const showGetNews =(data , name) =>{
         
     })
 }
+
+const getNewsDetails = (news_id) =>{
+    const URL = `https://openapi.programming-hero.com/api/news/${news_id}`;
+    fetch(URL)
+    .then(res => res.json())
+    .then(data => console.log(data.data[0]))
+
+}
+// _id
 
 allNewsCatagoris()
 
